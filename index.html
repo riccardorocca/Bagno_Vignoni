@@ -13,9 +13,11 @@
   <iframe style="position:fixed; width:100%; height:100%; border:0" src="" id="api-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" allow="autoplay; fullscreen; vr" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
   <div class="buttons">
+    <img id="legend1" width=130px src="https://riccardorocca.github.io/Bagno_Vignoni/logo.png"></img>
     <button id="keyA">Modello Esteso</button>
     <button id="keyC">Etichette</button>
     <button id="keyB">Strutture</button>
+    <img id="legend2" width=130px src="https://riccardorocca.github.io/Bagno_Vignoni/legend.png"></img>
     <button id="keyP">Viste 360º</button>
     <button id="keyF">Informazioni</button>
   </div>
@@ -81,7 +83,7 @@
               buttonA.addEventListener( 'click', function() {
                 switch(buttonA.innerHTML) {
                   case "Modello Esteso":
-                    buttonA.innerHTML = "Modello Dettagliato";
+                    buttonA.innerHTML = "Modello Dettagli";
                     api.show(node_Model2);
                     api.hide(node_Model1);
                     api.hide(node_build02);
@@ -93,7 +95,7 @@
                     api.hide(node_text09);
                     api.hide(node_text10);
                     break;
-                  case "Modello Dettagliato":
+                  case "Modello Dettagli":
                     buttonA.innerHTML = "Modello Esteso";
                     api.show(node_Model1);
                     api.hide(node_Model2);
@@ -122,6 +124,7 @@
                   case "Strutture":
                     buttonB.innerHTML = " Strutture ";
                     buttonB.style.backgroundColor = "#888888";
+                    document.getElementById("legend2").style.display = "none";
                     api.hide(node_build01);
                     api.hide(node_build02);
                     api.hide(node_build03);
@@ -137,6 +140,7 @@
                   case " Strutture ":
                     buttonB.innerHTML = "Strutture";
                     buttonB.style.backgroundColor = "#1caad9";
+                    document.getElementById("legend2").style.display = "block";
                     api.show(node_build01);
                     api.show(node_build02);
                     api.show(node_build03);
@@ -223,6 +227,10 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    img {
+      opacity: 0.8
     }
 
     /* Button style */
