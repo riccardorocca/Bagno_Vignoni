@@ -16,25 +16,33 @@
 
     <a href="https://rurallure.eu/pilots/thermal-heritage-on-the-ways-to-rome/" target="_blank">
       <img id="legend1" src="https://riccardorocca.github.io/Bagno_Vignoni/logo.png">
+      <br>
     </a>
-    <button id="keyA">Modello Esteso</button>
-    <button id="keyC">Etichette</button>
-    <button id="keyB">Strutture</button>
+    <button id="keyA">Nord</button>
+    <button id="keyB">Sud</button>
+    <br>
+    <button id="keyC"> Sezione </button>
+    <button id="keyD"> Titoli </button>
+    <button id="keyE">Etichette</button>
+    <button id="keyF">Strutture</button>
     <img id="legend2" src="https://riccardorocca.github.io/Bagno_Vignoni/legend.png"></img>
-    <button id="keyP">Vista 360º</button>
-    <button id="keyF">Informazioni</button>
+    <button id="keyG">Vista 360º</button>
+    <button id="keyH">Informazioni</button>
   </div>
 
   <!-- Your new script -->
   <script>
-    var model = 'cdd49496695b421490c74ad78ca0d980',
+    var model = '9085c620668745dda87abd452f4b0b5d',
 
     // Buttons
     buttonA = document.getElementById( 'keyA' ),
     buttonB = document.getElementById( 'keyB' ),
     buttonC = document.getElementById( 'keyC' ),
-    buttonP = document.getElementById( 'keyP' ),
+    buttonD = document.getElementById( 'keyD' ),
+    buttonE = document.getElementById( 'keyE' ),
     buttonF = document.getElementById( 'keyF' ),
+    buttonG = document.getElementById( 'keyG' ),
+    buttonH = document.getElementById( 'keyH' ),
 
     // Variables
     version = '1.7.1',
@@ -55,8 +63,10 @@
             for ( var prop in nodes ) {
               if ( nodes.hasOwnProperty( prop ) ) {
                 //alert(nodes[prop].instanceID+" : "+nodes[prop].name+" : "+nodes[prop].nodeMask+" : "+nodes[prop].type+" : "+nodes[prop].localMatrix+" ; "+nodes[prop].worldMatrix);
-                if      ( nodes[ prop ].name === "Model1ed" )                            { var node_Model1 = nodes[prop].instanceID; }
-                else if ( nodes[ prop ].name === "Model2ed" )                            { var node_Model2 = nodes[prop].instanceID; }
+                if      ( nodes[ prop ].name === "Model1N" )                             { var node_ModelN = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Model1S" )                             { var node_ModelS = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Sezione1" )                            { var node_SezioneT = nodes[prop].instanceID; }
+                else if ( nodes[ prop ].name === "Sezione2" )                            { var node_Sezione = nodes[prop].instanceID; }
                 else if ( nodes[ prop ].name === "Mulino di mezzo" )                     { var node_build01 = nodes[prop].instanceID; }
                 else if ( nodes[ prop ].name === "Mulino da piedi" )                     { var node_build02 = nodes[prop].instanceID; }
                 else if ( nodes[ prop ].name === "Mulino buca" )                         { var node_build03 = nodes[prop].instanceID; }
@@ -78,42 +88,107 @@
               }
             }
 
-            if (node_Model1 && node_Model2 ) {
-              /// Setup initial view
-              api.hide(node_Model2);
+            api.hide(node_Sezione);
+            api.hide(node_SezioneT);
 
+
+            if (node_ModelN) {
               // Add button event
               buttonA.addEventListener( 'click', function() {
                 switch(buttonA.innerHTML) {
-                  case "Modello Esteso":
-                    buttonA.innerHTML = "Modello +Preciso";
-                    api.show(node_Model2);
-                    api.hide(node_Model1);
-                    api.hide(node_build02);
-                    api.hide(node_build06);
-                    api.hide(node_build08);
-                    api.hide(node_build09);
-                    api.hide(node_build10);
+                  case "Nord":
+                    buttonA.innerHTML = " Nord ";
+                    buttonA.style.backgroundColor = "#888888";
+                    api.hide(node_ModelN);
+                    break;
+                  case " Nord ":
+                    buttonA.innerHTML = "Nord";
+                    buttonA.style.backgroundColor = "#1caad9";
+                    api.show(node_ModelN);
+                    break;
+                }
+              });
+            }
+
+            if (node_ModelS) {
+              // Add button event
+              buttonB.addEventListener( 'click', function() {
+                switch(buttonB.innerHTML) {
+                  case "Sud":
+                    buttonB.innerHTML = " Sud ";
+                    buttonB.style.backgroundColor = "#888888";
+                    api.hide(node_ModelS);
+                    break;
+                  case " Sud ":
+                    buttonB.innerHTML = "Sud";
+                    buttonB.style.backgroundColor = "#1caad9";
+                    api.show(node_ModelS);
+                    break;
+                }
+              });
+            }
+
+            if (node_Sezione) {
+              // Add button event
+              buttonC.addEventListener( 'click', function() {
+                switch(buttonC.innerHTML) {
+                  case "Sezione":
+                    buttonC.innerHTML = " Sezione ";
+                    buttonC.style.backgroundColor = "#888888";
+                    api.hide(node_Sezione);
+                    break;
+                  case " Sezione ":
+                    buttonC.innerHTML = "Sezione";
+                    buttonC.style.backgroundColor = "#1caad9";
+                    api.show(node_Sezione);
+                    break;
+                }
+              });
+            }
+
+            if (node_SezioneT) {
+              // Add button event
+              buttonD.addEventListener( 'click', function() {
+                switch(buttonD.innerHTML) {
+                  case "Titoli":
+                    buttonD.innerHTML = " Titoli ";
+                    buttonD.style.backgroundColor = "#888888";
+                    api.hide(node_SezioneT);
+                    break;
+                  case " Titoli ":
+                    buttonD.innerHTML = "Titoli";
+                    buttonD.style.backgroundColor = "#1caad9";
+                    api.show(node_SezioneT);
+                    break;
+                }
+              });
+            }
+
+            if (node_text01 && node_text02 && node_text03 && node_text04 && node_text09 && node_text10 && node_text11 ) {
+              // Add button event
+              buttonE.addEventListener( 'click', function() {
+                switch(buttonE.innerHTML) {
+                  case "Etichette":
+                    buttonE.innerHTML = " Etichette ";
+                    buttonE.style.backgroundColor = "#888888";
+                    api.hide(node_text01);
                     api.hide(node_text02);
+                    api.hide(node_text03);
+                    api.hide(node_text04);
                     api.hide(node_text09);
                     api.hide(node_text10);
+                    api.hide(node_text11);
                     break;
-                  case "Modello +Preciso":
-                    buttonA.innerHTML = "Modello Esteso";
-                    api.show(node_Model1);
-                    api.hide(node_Model2);
-                    if ( buttonB.innerHTML == "Strutture" ) {
-                      api.show(node_build02);
-                      api.show(node_build06);
-                      api.show(node_build08);
-                      api.show(node_build09);
-                      api.show(node_build10);
-                    }
-                    if ( buttonC.innerHTML == "Etichette" ) {
-                      api.show(node_text02);
-                      api.show(node_text09);
-                      api.show(node_text10);
-                    }
+                  case " Etichette ":
+                    buttonE.innerHTML = "Etichette";
+                    buttonE.style.backgroundColor = "#1caad9";
+                    api.show(node_text01);
+                    api.show(node_text02);
+                    api.show(node_text03);
+                    api.show(node_text04);
+                    api.show(node_text09);
+                    api.show(node_text10);
+                    api.show(node_text11);
                     break;
                 }
               });
@@ -122,11 +197,11 @@
 
             if (node_build01 && node_build02 && node_build03 && node_build04 && node_build05 && node_build06 && node_build07 && node_build08 && node_build09 && node_build10 && node_build11 ) {
               // Add button event
-              buttonB.addEventListener( 'click', function() {
-                switch(buttonB.innerHTML) {
+              buttonF.addEventListener( 'click', function() {
+                switch(buttonF.innerHTML) {
                   case "Strutture":
-                    buttonB.innerHTML = " Strutture ";
-                    buttonB.style.backgroundColor = "#888888";
+                    buttonF.innerHTML = " Strutture ";
+                    buttonF.style.backgroundColor = "#888888";
                     document.getElementById("legend2").style.display = "none";
                     api.hide(node_build01);
                     api.hide(node_build02);
@@ -141,8 +216,8 @@
                     api.hide(node_build11);
                     break;
                   case " Strutture ":
-                    buttonB.innerHTML = "Strutture";
-                    buttonB.style.backgroundColor = "#1caad9";
+                    buttonF.innerHTML = "Strutture";
+                    buttonF.style.backgroundColor = "#1caad9";
                     document.getElementById("legend2").style.display = "block";
                     api.show(node_build01);
                     api.show(node_build02);
@@ -161,42 +236,11 @@
 
             }
 
-            if (node_text01 && node_text02 && node_text03 && node_text04 && node_text09 && node_text10 && node_text11 ) {
-              // Add button event
-              buttonC.addEventListener( 'click', function() {
-                switch(buttonC.innerHTML) {
-                  case "Etichette":
-                    buttonC.innerHTML = " Etichette ";
-                    buttonC.style.backgroundColor = "#888888";
-                    api.hide(node_text01);
-                    api.hide(node_text02);
-                    api.hide(node_text03);
-                    api.hide(node_text04);
-                    api.hide(node_text09);
-                    api.hide(node_text10);
-                    api.hide(node_text11);
-                    break;
-                  case " Etichette ":
-                    buttonC.innerHTML = "Etichette";
-                    buttonC.style.backgroundColor = "#1caad9";
-                    api.show(node_text01);
-                    api.show(node_text02);
-                    api.show(node_text03);
-                    api.show(node_text04);
-                    api.show(node_text09);
-                    api.show(node_text10);
-                    api.show(node_text11);
-                    break;
-                }
-              });
-
-            }
-
-            buttonP.addEventListener( 'click', function() {
+            buttonG.addEventListener( 'click', function() {
               window.open("https://roundme.com/tour/852596/view/2689019");
             });
 
-            buttonF.addEventListener( 'click', function() {
+            buttonH.addEventListener( 'click', function() {
               window.open("http://www.comunesanquirico.it/area-turismo/il-parco-dei-mulini-a-bagno-vignoni/");
             });
 
@@ -262,14 +306,12 @@
       background: #1caad9;
     }
 
-    button:hover {
-      opacity: 1;
-    }
-
-    button:active {
-      font-weight: bold;
-    }
-
+    button:hover {opacity: 1;}
+    button:active {font-weight: bold;}
+    #keyA {width: 64px; display: inline;}
+    #keyB {width: 63px; display: inline;}
+    #keyC {background: #888888; width: 64px; display: inline;}
+    #keyD {background: #888888; width: 63px; display: inline;}
     #keyP { margin-top: 10px;}
 
   </style>
