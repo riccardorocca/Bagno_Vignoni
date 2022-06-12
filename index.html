@@ -100,11 +100,17 @@
                     buttonA.innerHTML = " Nord ";
                     buttonA.style.backgroundColor = "#888888";
                     api.hide(node_ModelN);
+                    api.hide(node_build09);
+                    api.hide(node_text09);
+                    api.hide(node_build10);
+                    api.hide(node_text10);
                     break;
                   case " Nord ":
                     buttonA.innerHTML = "Nord";
                     buttonA.style.backgroundColor = "#1caad9";
                     api.show(node_ModelN);
+                    if (buttonE.innerHTML == "Etichette") {api.show(node_text09); api.show(node_text10)}
+                    if (buttonF.innerHTML == "Strutture") {api.show(node_build09); api.show(node_build10)}
                     break;
                 }
               });
@@ -118,11 +124,15 @@
                     buttonB.innerHTML = " Sud ";
                     buttonB.style.backgroundColor = "#888888";
                     api.hide(node_ModelS);
+                    api.hide(node_build11);
+                    api.hide(node_text11);
                     break;
                   case " Sud ":
                     buttonB.innerHTML = "Sud";
                     buttonB.style.backgroundColor = "#1caad9";
                     api.show(node_ModelS);
+                    if (buttonE.innerHTML == "Etichette") {api.show(node_text11)}
+                    if (buttonF.innerHTML == "Strutture") {api.show(node_build11)}
                     break;
                 }
               });
@@ -186,9 +196,8 @@
                     api.show(node_text02);
                     api.show(node_text03);
                     api.show(node_text04);
-                    api.show(node_text09);
-                    api.show(node_text10);
-                    api.show(node_text11);
+                    if (buttonA.innerHTML == "Nord") {api.show(node_text09); api.show(node_text10)};
+                    if (buttonB.innerHTML == "Sud") {api.show(node_text11)};
                     break;
                 }
               });
@@ -227,9 +236,8 @@
                     api.show(node_build06);
                     api.show(node_build07);
                     api.show(node_build08);
-                    api.show(node_build09);
-                    api.show(node_build10);
-                    api.show(node_build11);
+                    if (buttonA.innerHTML == "Nord") {api.show(node_build09); api.show(node_build10)};
+                    if (buttonB.innerHTML == "Sud") {api.show(node_build11)};
                     break;
                 }
               });
