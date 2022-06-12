@@ -22,7 +22,7 @@
     <button id="keyB">Sud</button>
     <br>
     <button id="keyC"> Sezione </button>
-    <button id="keyD"> Titoli </button>
+    <button id="keyD">Testata</button>
     <button id="keyE">Etichette</button>
     <button id="keyF">Strutture</button>
     <img id="legend2" src="https://riccardorocca.github.io/Bagno_Vignoni/legend.png"></img>
@@ -146,11 +146,13 @@
                     buttonC.innerHTML = " Sezione ";
                     buttonC.style.backgroundColor = "#888888";
                     api.hide(node_Sezione);
+                    api.hide(node_SezioneT);
                     break;
                   case " Sezione ":
                     buttonC.innerHTML = "Sezione";
                     buttonC.style.backgroundColor = "#1caad9";
                     api.show(node_Sezione);
+                    if (buttonD.innerHTML == "Testata") {api.show(node_SezioneT)};
                     break;
                 }
               });
@@ -160,15 +162,15 @@
               // Add button event
               buttonD.addEventListener( 'click', function() {
                 switch(buttonD.innerHTML) {
-                  case "Titoli":
-                    buttonD.innerHTML = " Titoli ";
+                  case "Testata":
+                    buttonD.innerHTML = " Testata ";
                     buttonD.style.backgroundColor = "#888888";
                     api.hide(node_SezioneT);
                     break;
-                  case " Titoli ":
-                    buttonD.innerHTML = "Titoli";
+                  case " Testata ":
+                    buttonD.innerHTML = "Testata";
                     buttonD.style.backgroundColor = "#1caad9";
-                    api.show(node_SezioneT);
+                    if (buttonC.innerHTML == "Sezione") {api.show(node_SezioneT)};
                     break;
                 }
               });
@@ -319,7 +321,7 @@
     #keyA {width: 64px; display: inline;}
     #keyB {width: 63px; display: inline;}
     #keyC {background: #888888; width: 64px; display: inline;}
-    #keyD {background: #888888; width: 63px; display: inline;}
+    #keyD {width: 63px; display: inline;}
     #keyP {margin-top: 10px;}
 
   </style>
