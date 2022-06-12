@@ -146,13 +146,19 @@
                     buttonC.innerHTML = " Sezione ";
                     buttonC.style.backgroundColor = "#888888";
                     api.hide(node_Sezione);
-                    api.hide(node_SezioneT);
+                    if (buttonD.innerHTML == "Testata") {
+                      buttonD.style.backgroundColor = "#5299B0";
+                      api.hide(node_SezioneT);
+                    };
                     break;
                   case " Sezione ":
                     buttonC.innerHTML = "Sezione";
                     buttonC.style.backgroundColor = "#1caad9";
                     api.show(node_Sezione);
-                    if (buttonD.innerHTML == "Testata") {api.show(node_SezioneT)};
+                    if (buttonD.innerHTML == "Testata") {
+                      buttonD.style.backgroundColor = "#1caad9";
+                      api.show(node_SezioneT);
+                    };
                     break;
                 }
               });
@@ -169,8 +175,13 @@
                     break;
                   case " Testata ":
                     buttonD.innerHTML = "Testata";
-                    buttonD.style.backgroundColor = "#1caad9";
-                    if (buttonC.innerHTML == "Sezione") {api.show(node_SezioneT)};
+                    if (buttonC.innerHTML == "Sezione") {
+                      buttonD.style.backgroundColor = "#1caad9";
+                      api.show(node_SezioneT)
+                    }
+                    else {
+                      buttonD.style.backgroundColor = "#5299B0";
+                    };
                     break;
                 }
               });
@@ -321,7 +332,7 @@
     #keyA {width: 64px; display: inline;}
     #keyB {width: 63px; display: inline;}
     #keyC {background: #888888; width: 64px; display: inline;}
-    #keyD {width: 63px; display: inline;}
+    #keyD {background: #5299B0; width: 63px; display: inline;}
     #keyP {margin-top: 10px;}
 
   </style>
